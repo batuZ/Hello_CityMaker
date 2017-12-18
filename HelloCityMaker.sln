@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "renderControle", "renderControle\renderControle.csproj", "{F63C9989-86D5-4913-8EFF-5D91809FA361}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectPlugin", "ConnectPlugin\ConnectPlugin.csproj", "{A2C38222-B0F2-47AD-ACB0-996123E7CE92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectToolBox", "ConnectToolBox\ConnectToolBox.csproj", "{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,22 @@ Global
 		{F63C9989-86D5-4913-8EFF-5D91809FA361}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F63C9989-86D5-4913-8EFF-5D91809FA361}.Release|x64.ActiveCfg = Release|x64
 		{F63C9989-86D5-4913-8EFF-5D91809FA361}.Release|x64.Build.0 = Release|x64
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Debug|x64.Build.0 = Debug|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Release|x64.ActiveCfg = Release|Any CPU
+		{A2C38222-B0F2-47AD-ACB0-996123E7CE92}.Release|x64.Build.0 = Release|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Debug|x64.Build.0 = Debug|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Release|x64.ActiveCfg = Release|Any CPU
+		{EE5B9C75-C3F6-4E26-B467-BE50FD16D1CC}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

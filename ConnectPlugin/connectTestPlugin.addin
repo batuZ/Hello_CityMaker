@@ -1,0 +1,40 @@
+<AddIn name        = "CityMakerConnect Application"
+       author      = "YDH"
+       url         = "http://www.gvitech.com"
+       description = "Base addIn of CityMakerConnect"
+       addInManagerHidden = "true">
+
+  <Manifest>
+    <Identity name = "ConnectPlugin_hahahaha"/>
+  </Manifest>
+
+  <Runtime>
+    <!--这里必须指定准确的文件名，否则...-->
+    <Import assembly = "ConnectPlugin.dll"></Import>
+  </Runtime>
+
+  <Path name = "/Workbench/MainMenu">
+    <!--工具操作-->
+  </Path>
+  <!--Explorer版-->
+  <Path name = "/Workbench/MainMenu/Explorer">
+    <!--在工具栏新建页，id是唯一标识，type是ribbonPage(页)，label是页的显示名称，insertafter是说明位置在toolsPage后面-->
+    <MenuItem       id = "TestPage"       type = "RibbonPage"          label = "插件测试"   insertafter="toolsPage" >
+      <!--组001：子级，id是唯一标识，type是RibbonPageGroup页里面的组，label是组的显示名称-->
+      <MenuItem     id = "outputGroup1"   type = "RibbonPageGroup"     label = "组001">
+        <!--按钮1：子级，id是唯一标识，type是ButtonCommand组里的按钮，label是按钮的显示名称，class是对应的[namespace.class]，icon你猜-->
+        <MenuItem   id = "outputPic1"     type="ButtonCommand"         label = "测试按钮1"   class="ConnectPlugin.Button01" icon="M_exportmap"  shortcut ="CtrlE"/>
+        <!--按钮2-->
+        <MenuItem   id = "outputPic2"     type="ButtonCommand"         label = "测试按钮2"   class="ConnectPlugin.Button02" icon="M_exportmap"  />
+      </MenuItem>
+      <!--组002-->
+      <MenuItem     id = "outputGroup2"  type = "RibbonPageGroup"     label = "组002">
+        <MenuItem   id = "snap1"         type="CheckCommand"          label = "测试按钮3"   class="ConnectPlugin.Button03"   icon="T_Snap" />
+      </MenuItem>
+    </MenuItem>
+  </Path>
+  <!--限制版Explorer-->
+  <Path name = "/Workbench/MainMenu/Explorer/LimitedVersion">
+    <!--地图操作-->
+  </Path>
+</AddIn>
