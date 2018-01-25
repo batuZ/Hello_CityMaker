@@ -9,3 +9,5 @@
 	1、创建一个类，继承AbstractCommand，其中run对应一条功能，CommandName 是显示出来的工具名称
 	2、dll 放在 connect/ToolBox下
 	3、所有引用库编译时不拷贝
+## FDE
+	创建FDE数据库,增删改查，未完成。。
