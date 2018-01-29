@@ -71,10 +71,10 @@ namespace FDE
             int oid = fcu.LastInsertId;                         //成功后反回这条buffer的主键ID
 
             //查
+            string tagStr = "tagName"; 
             IQueryFilter qf = new QueryFilter();            //过滤器
-            IQueryDef qd = new QueryDef();
+            qf.WhereClause = $"Name = '{tagStr}'";
             IFdeCursor res = FC.Search(qf, true);           //条件查
-            res = FC.Search(null, true);                    //全选
             IRowBuffer aBuffer = res.NextRow();             //遍历查询结果
 
             //改
