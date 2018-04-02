@@ -86,7 +86,6 @@ namespace FDE
             FC.Delete(qf);
             FC.DeleteRow(0);
             FC.Truncate();          //保留表结构，清空表
-
             
         }
     }
