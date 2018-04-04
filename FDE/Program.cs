@@ -1,4 +1,5 @@
-﻿using Gvitech.CityMaker.FdeCore;
+﻿using Gvitech.CityMaker.Controls;
+using Gvitech.CityMaker.FdeCore;
 using Gvitech.CityMaker.FdeGeometry;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace FDE
         ///         设置database就是SDB
         ///         gviConnectionFireBird2x ,设置database就是FDB，可以给build或connect用
         static ConnectionInfo ci = new ConnectionInfo() { ConnectionType = gviConnectionType.gviConnectionSQLite3 };
-
+        static AxRenderControl ax = new AxRenderControl();
         //数据源
         static IDataSource DS = new DataSourceFactory().CreateDataSource(ci, null);
 
@@ -60,18 +61,40 @@ namespace FDE
 
             int nameID = FC.GetFields().IndexOf("Name");        //获取对应列的索引，
             int geomID = FC.GetFields().IndexOf("Geometry");
+            int fidIndex = FC.GetFields().IndexOf(FC.FidFieldName);
 
-            //增
+            //增加单条数据，并同步到FeatureLayer
             IFdeCursor fcu = FC.Insert();                       //通过FC创建一个插入游标，用来操作rowBuffer
             IRowBuffer rb = FC.CreateRowBuffer();               //通过FC创建一条空要素实例，用来设置数据，设置完成后将其塞入FC
             IPoint p = new GeometryFactory().CreatePoint(gviVertexAttribute.gviVertexAttributeZ);   // 将要塞入空间列的几何对象，类型要对应 FC的field.GeometryDef.GeometryColumnType ，否则塞不进
             rb.SetValue(nameID, "testPointA");                  //塞名称
             rb.SetValue(geomID, p);                             //塞几何
             fcu.InsertRow(rb);                                  //塞进FC
-            int oid = fcu.LastInsertId;                         //成功后反回这条buffer的主键ID
+            int fid = fcu.LastInsertId;                         //成功后反回这条buffer的主键ID
+            rb.SetValue(fidIndex, fid);                         //Cursor（FC）增加数据后会产生一个对应的FID，要把这个FID赋值给row才能在FLayer中显示
+            ax.FeatureManager.CreateFeature(FC, rb);            //同步到renderControl
+
+
+            //增加很大量数据时，参考以下方法
+            IFdeCursor cu = FC.Insert();
+            IRowBufferCollection rows = new RowBufferCollection();
+            for (int i = 0; i < 100000; i++)
+            {
+                IRowBuffer row = FC.CreateRowBuffer();
+                // do something ...
+                row.SetValue(geomID, p);
+                cu.InsertRow(row);
+                row.SetValue(fidIndex, cu.LastInsertId);
+                rows.Add(row);
+            }
+            ax.FeatureManager.CreateFeatures(FC, rows);
+            //或直接整体更新
+            ax.FeatureManager.RefreshFeatureClass(FC);
+
+
 
             //查
-            string tagStr = "tagName"; 
+            string tagStr = "tagName";
             IQueryFilter qf = new QueryFilter();            //过滤器
             qf.WhereClause = $"Name = '{tagStr}'";
             IFdeCursor res = FC.Search(qf, true);           //条件查
