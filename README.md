@@ -13,6 +13,8 @@
 
 ## FDE
 	创建FDE数据库,增删改查
+	ILicenseServer lic = new LicenseServer();
+	lic.SetHost("192.168.2.200",8588,"")
 
 ## 批量处理FDB中的模型
 	案例为关闭光照
